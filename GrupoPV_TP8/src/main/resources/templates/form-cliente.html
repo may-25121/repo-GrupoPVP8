@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+	<meta charset="UTF-8">
+	<title>Formulario de cliente</title>
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	</head>
+	<body>
+		<header th:insert="layout/header :: header"></header>
+		<div class="container mb-5">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="text-center mb-5 text-uppercase">Formulario de Cliente</h2>
+				</div>
+				<form class="col-sm-12 col-md-9 mb-3" th:action="@{/cliente/guardar}" th:method="post" th:object="${cliente}">
+				
+			<!--  	//hidden: archivo oculto-->
+				<input type="hidden" th:field="*{id}" />
+				<input type="hidden" th:field="*{cuenta.id}" />
+				
+				<div class="p-5 mx-3 border">
+				
+					<!-- ATRIBUTOS DEL CLIENTE -->
+					
+					<div class="form-group row">
+						<label for="tipoDoc"  class="col-sm-4 col-form-label">Tipo de Documento:</label>
+		  				<select class="custom-select col-sm-8" id="tipoDoc" th:field="${cliente.tipoDocumento}" required>
+							<option value="">Seleccione una opción</option>
+							<option value="DNI">DNI</option>
+							<option value="Pasaporte">Pasaporte</option>
+						</select>
+					</div>
+					<div class="form-group row">
+						<label for="nroDoc"  class="col-sm-4 col-form-label">Numero de Documento:</label>
+						<input type="number" id="nroDoc" class="form-control col-sm-8" th:field="${cliente.nroDocumento}" placeholder="Ingresar DNI" required>
+					</div>
+					<div class="form-group row">
+						<label for="nombre"  class="col-sm-4 col-form-label">Nombre y Apellido:</label>
+						<input type="text" id="nombre" class="form-control col-sm-8" th:field="${cliente.nombreApellido}" placeholder="Ingresar nombre y apellido" required>					
+					</div>
+					<div class="form-group row">
+						<label for="email"  class="col-sm-4 col-form-label">Email:</label>
+						<input type="email" id="email" class="form-control col-sm-8" th:field="${cliente.email}" placeholder="Ingresar email" required>
+					</div>
+					<div class="form-group row">
+						<label for="password"  class="col-sm-4 col-form-label">Password:</label>
+						<input type="password" id="password" class="form-control col-sm-8" th:field="${cliente.password}" placeholder="Ingresar contraseña " required>
+					</div>
+					<div class="form-group row">
+						<label for="fechaNacimiento"  class="col-sm-4 col-form-label">Fecha de Nacimiento:</label>
+						<input type="date" id="fechaNacimiento" class="form-contro col-sm-8" th:field="${cliente.fechaNacimiento}" placeholder="Ingresar fecha de nacimiento" required>
+					</div>
+					<div class="form-group row">
+						<label for="codigoArea" class="col-sm-4 col-form-label">Código de Area:</label>
+						<input type="number" id="codigoAreaTelefono" class="form-control col-sm-8" th:field="${cliente.codigoAreaTelefono}" placeholder="Ingresar codigo de area" required>
+					</div>
+					<div class="form-group row">
+						<label for="nroTelefono" class="col-sm-4 col-form-label">Numero de Teléfono</label>
+						<input type="number" id="nroTelefono" class="form-control col-sm-8" th:field="${cliente.nroTelefono}" placeholder="Ingresar numero de telefono" required>
+					</div>
+					<div class="form-group row">
+						<label for="fechaUltimaCompra" class="col-sm-4 col-form-label">Fecha de la ultima compra:</label>
+						<input type="date" id="fechaUltimaCompra" class="form-control col-sm-8" th:field="${cliente.fechaUltimaCompra}" placeholder="Ingresar la fecha de la ultima compra" required>
+					</div>
+					
+					<!-- ATRIBUTOS DE LA CUENTA -->
+					
+					<div class="form-group row">
+						<label for="cliente.cuenta.saldo" class="col-sm-4 col-form-label">Saldo</label>
+						<input type="number" id="saldo" class="form-control col-sm-8" th:field="${cliente.cuenta.saldo}" required>
+					</div>
+					
+					<div class="form-group row">
+						<label for="cliente.cuenta.estado"  class="col-sm-4 col-form-label">Estado de cuenta</label>
+							<select class="col-sm-8" id="estado" th:field="${cliente.cuenta.estado}">
+								<option value="">Seleccione una opción</option>
+								<option value="activa">Activa</option>
+								<option value="pasiva">Inactiva</option>
+							</select>
+					</div>
+					
+
+			    <!-- 	<h4>DATOS DE CUENTA</h4>
+						<div class="form-group row">
+							<label for="saldo" class="col-sm-3 col-form-label">Saldo:</label><br>
+							<input type="number" id="saldo" class="form-control col-sm-9" th:field="${cuenta.saldo}">
+						</div>
+						<div class="form-group row">
+					  		<!-- <label for="fechacreacion" class="col-sm-3 col-form-label">Fecha de Creacion:</label><br>
+							<input type="date" id="fechacreacion" class="form-control col-sm-9" th:field="${cuenta.fechaCreacion}">
+							
+						</div>
+						<label for="estado"  class="col-sm-4 col-form-label">Estado:</label>
+		  				<select class="custom-select col-sm-8" id="estado" th:field="${cuenta.estado}" required>
+							<option value="">Seleccione una opción</option>
+							<option value="Activo">Activo</option>
+							<option value="Inactiva">Inactiva</option>
+						</select>-->
+
+					<!-- BOTON GUARDAR -->
+					<div class="d-flex justify-content-center mt-4">
+				 		<button type="submit" class="btn btn-primary text-center" value="Guardar">Guardar</button>
+				 	</div>
+				</div> 
+				</form> 
+			 	<aside class="col-sm-12 col-md-3 text-center" th:insert="layout/publicidad :: aside"></aside>
+			</div>
+		</div>
+		
+		<footer th:insert="layout/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+	</body>
+</html>

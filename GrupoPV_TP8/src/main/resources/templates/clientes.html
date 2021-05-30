@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Listado de clientes</title>
+<meta name="viewport"
+	content="user-scalable=no, width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+	<header th:insert="layout/header :: header"></header>
+	<div class="container mb-5">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="text-center text-uppercase mb-5">Listado de Clientes</h2>
+			</div>
+			<div class="table-responsive col-sm-12 col-md-9 mb-3">
+				<table class="table text-nowrap" border="1">
+					<thead>
+						<tr class="text-center">
+							<th scope="col">Tipo Doc.</th>
+							<th scope="col">Nro Doc.</th>
+							<th scope="col">Nombre y Apellido</th>
+							<th scope="col">Fecha de Nacimiento</th>
+							<th scope="col">Edad</th>
+							<th scope="col">Telefono</th>
+							<th scope="col">Fecha de ultima compra</th>
+							<th scope="col">Datos adicionales</th>
+							<th scope="col">Datos de cuentas</th>
+							<th scope="col">Opciones</th>
+						</tr>
+					</thead>
+					<tbody align="center">
+						<tr th:each="c:${clientes}">
+							<td th:text="${c.tipoDocumento}"></td>
+							<td th:text="${c.nroDocumento}"></td>
+							<td th:text="${#strings.toUpperCase(c.nombreApellido)}"></td>
+							<td
+								th:text="${#temporals.format(c.fechaNacimiento,'dd/MM/yyyy')}"></td>
+							<td th:text="${c.edad}"></td>
+							<td th:text="${c.codigoAreaTelefono} + '-' + ${c.nroTelefono}"></td>
+							<td
+								th:text="${#temporals.format(c.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
+							<td align="left"><span
+								th:text="'-Tiempo transcurrido desde la ultima compra: ' + ${c.getTiempoUltimaCompra()}"></span><br>
+								<span
+								th:text="'-Tiempo transcurrido en dias desde fecha nacimiento: ' + ${c.getTiempoTranscurridoFechaNacimiento()} +' dias'"></span><br>
+								<span
+								th:text="'-Tiempo transcurrido hasta proximo cumpleaños: ' + ${c.getTiempoHastaCumple()}"></span><br>
+							</td>
+							<td align="left"><span th:text="'Saldo: ' + ${c.cuenta.saldo}"></span><br>
+								<span th:text="'Fecha de creación: ' + ${#temporals.format(c.cuenta.fechaCreacion,'dd/MM/yyyy') }"></span><br> <span
+								th:text="'Estado: ' + ${c.cuenta.estado}"></span><br></td>
+
+							<td><a th:href="@{/cliente/editar/}+${c.id}"
+								class="btn btn-warning">Editar</a> <a
+								th:href="@{/cliente/borrar/}+${c.id}" class="btn btn-danger">Borrar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<aside class="col-sm-12 col-md-3 text-center"
+				th:insert="layout/publicidad :: aside"></aside>
+		</div>
+	</div>
+
+	<footer th:insert="layout/footer :: footer"></footer>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

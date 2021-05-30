@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+	<meta charset="UTF-8">
+	<title>Listado de Productos</title>
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	</head>
+	<body>
+		<header th:insert="layout/header :: header"></header>
+		<div class="container mb-5">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="text-center text-uppercase mb-5">Lista de Productos</h2>
+				</div>
+				<div class="table-responsive col-sm-12 col-md-9 mb-3">
+					<table class="table table-striped" border="1">
+						<thead>
+							<tr>
+								<th scope="col">Codigo</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Precio</th>
+								<th scope="col">Marca</th>
+								<th scope="col">Stock</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="p: ${productos}">
+								<td th:text="${p.codigo}"></td>
+								<td th:text="${p.nombre}"></td>
+								<td th:text="${p.precio}"></td>
+								<td th:text="${p.marca}"></td>
+								<td th:text="${p.stock}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<aside class="col-sm-12 col-md-3 text-center" th:insert="layout/publicidad :: aside"></aside>
+			</div>
+		</div>
+			
+		<footer th:insert="layout/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+		
+	</body>
+</html>

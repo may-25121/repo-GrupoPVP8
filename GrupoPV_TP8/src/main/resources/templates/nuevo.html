@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+	<title>Formulario</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	</head>
+	<body>
+		<header th:insert="layout/header :: header"></header>
+		<div class="container mb-5">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="text-center mb-5 text-uppercase">Formulario de Producto</h2>
+				</div>
+				<form action="/producto/guardar" class="col-sm-12 col-md-9 mb-3" th:bject="${producto}" method="POST">
+					<div class="p-5 mx-3 border">
+						<div class="form-group row">
+							<label for="codigo" class="col-sm-3 col-form-label">Codigo:</label><br>
+							<input type="number" id="codigo" class="form-control col-sm-9" placeholder="Ingrese codigo" th:field="${producto.codigo}">
+						</div>
+						<div class="form-group row">
+							<label for="nombre" class="col-sm-3 col-form-label">Nombre:</label><br>
+							<input type="text" id="nombre" class="form-control col-sm-9" th:field="${producto.nombre}">
+						</div>
+						<div class="form-group row">
+					  		<label for="precio" class="col-sm-3 col-form-label">Precio:</label><br>
+							<input type="number" id="precio" class="form-control col-sm-9" th:field="${producto.precio}">
+						</div>
+						<div class="form-group row">
+							<label for="marca" class="col-sm-3 col-form-label">Marca:</label><br>
+							<input type="text" id="marca" class="form-control col-sm-9" th:field="${producto.marca}">
+						</div>
+						<div class="form-group row">
+							<label for="stock" class="col-sm-3 col-form-label">Stock:</label><br>
+							<input type="number" id="stock" class="form-control col-sm-9" th:field="${producto.stock}">
+						</div>
+						<div class="d-flex justify-content-center mt-5">
+							<button type="submit" class="btn btn-primary text-center" value="Enviar">Guardar</button>
+						</div>
+					</div>
+				</form>
+				<aside class="col-sm-12 col-md-3 text-center" th:insert="layout/publicidad :: aside"></aside>	
+			</div>
+		</div>
+		
+		<footer th:insert="layout/footer :: footer"></footer>
+		
+		<script type="text/javascript" th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+	</body>
+</html>
