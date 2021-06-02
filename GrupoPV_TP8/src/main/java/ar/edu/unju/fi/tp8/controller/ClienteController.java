@@ -1,11 +1,15 @@
 package ar.edu.unju.fi.tp8.controller;
 
+import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,13 +55,21 @@ public class ClienteController {
 	}
 
 	@PostMapping("/cliente/guardar")
-	public ModelAndView guardarCliente(@ModelAttribute("cliente")Cliente cliente) {
-		ModelAndView model= new ModelAndView("clientes");
-		cliente.setEdad(cliente.getEdad());
-		cliente.getCuenta().setFechaCreacion(cliente.getCuenta().getFechaCreacion());
-		clienteService.guardarCliente(cliente);
-		model.addObject("clientes", clienteService.getClientes());
-		return model;
+	public ModelAndView guardarCliente(@Valid @ModelAttribute("cliente") Cliente cliente,BindingResult result) {
+		ModelAndView modelAndView;
+		if(result.hasErrors()) {
+			modelAndView= new ModelAndView("form-cliente");
+			List<Cliente> clientes= clienteService.getClientes();
+			modelAndView.addObject("clientes", clientes);
+			return modelAndView;
+		}else {
+			modelAndView= new ModelAndView("clientes");
+			cliente.setEdad(cliente.getEdad());
+			cliente.getCuenta().setFechaCreacion(cliente.getCuenta().getFechaCreacion());
+			clienteService.guardarCliente(cliente);
+			modelAndView.addObject("clientes", clienteService.getClientes());
+			return modelAndView;
+		}
 	}
 
 	@GetMapping("/cliente/listado")

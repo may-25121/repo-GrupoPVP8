@@ -24,52 +24,61 @@
 				
 					<!-- ATRIBUTOS DEL CLIENTE -->
 					
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="tipoDoc"  class="col-sm-4 col-form-label">Tipo de Documento:</label>
-		  				<select class="custom-select col-sm-8" id="tipoDoc" th:field="${cliente.tipoDocumento}" required>
+		  				<select class="custom-select col-sm-8" id="tipoDoc" th:field="${cliente.tipoDocumento}">
 							<option value="">Seleccione una opción</option>
 							<option value="DNI">DNI</option>
 							<option value="Pasaporte">Pasaporte</option>
 						</select>
+					  	<div class="alert alert-danger col-sm-8 mt-1" role="alert" th:if="${#fields.hasErrors('tipoDocumento')}" th:errors="*{tipoDocumento}"></div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="nroDoc"  class="col-sm-4 col-form-label">Numero de Documento:</label>
-						<input type="number" id="nroDoc" class="form-control col-sm-8" th:field="${cliente.nroDocumento}" placeholder="Ingresar DNI" required>
+						<input type="number" id="nroDoc" class="form-control col-sm-8" th:field="${cliente.nroDocumento}" placeholder="Ingresar DNI">
+						<div class="alert alert-danger col-sm-8 mt-1" role="alert" th:if="${#fields.hasErrors('nroDocumento')}" th:errors="*{nroDocumento}"></div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="nombre"  class="col-sm-4 col-form-label">Nombre y Apellido:</label>
-						<input type="text" id="nombre" class="form-control col-sm-8" th:field="${cliente.nombreApellido}" placeholder="Ingresar nombre y apellido" required>					
+						<input type="text" id="nombre" class="form-control col-sm-8" th:field="${cliente.nombreApellido}" placeholder="Ingresar nombre y apellido">					
+						<div class="alert alert-danger col-sm-8 mt-1" role="alert" th:if="${#fields.hasErrors('nombreApellido')}" th:errors="*{nombreApellido}"></div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="email"  class="col-sm-4 col-form-label">Email:</label>
-						<input type="email" id="email" class="form-control col-sm-8" th:field="${cliente.email}" placeholder="Ingresar email" required>
+						<input type="email" id="email" class="form-control col-sm-8" th:field="${cliente.email}" placeholder="Ingresar email">
+						<div class="alert alert-danger col-sm-8 mt-1" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="password"  class="col-sm-4 col-form-label">Password:</label>
-						<input type="password" id="password" class="form-control col-sm-8" th:field="${cliente.password}" placeholder="Ingresar contraseña " required>
+						<input type="password" id="password" class="form-control col-sm-8" th:field="${cliente.password}" placeholder="Ingresar contraseña ">
+						<div class="alert alert-danger col-sm-8 mt-1 " role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="fechaNacimiento"  class="col-sm-4 col-form-label">Fecha de Nacimiento:</label>
-						<input type="date" id="fechaNacimiento" class="form-contro col-sm-8" th:field="${cliente.fechaNacimiento}" placeholder="Ingresar fecha de nacimiento" required>
+						<input type="date" id="fechaNacimiento" class="form-contro col-sm-8" th:field="${cliente.fechaNacimiento}" placeholder="Ingresar fecha de nacimiento">
+						<div class="alert alert-danger col-sm-8 mt-1" role="alert" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="codigoArea" class="col-sm-4 col-form-label">Código de Area:</label>
-						<input type="number" id="codigoAreaTelefono" class="form-control col-sm-8" th:field="${cliente.codigoAreaTelefono}" placeholder="Ingresar codigo de area" required>
+						<input type="number" id="codigoAreaTelefono" class="form-control col-sm-8" th:field="${cliente.codigoAreaTelefono}" placeholder="Ingresar codigo de area">
+						<div class="alert alert-danger col-sm-8 mt-1 " role="alert" th:if="${#fields.hasErrors('codigoAreaTelefono')}" th:errors="*{codigoAreaTelefono}"></div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="nroTelefono" class="col-sm-4 col-form-label">Numero de Teléfono</label>
-						<input type="number" id="nroTelefono" class="form-control col-sm-8" th:field="${cliente.nroTelefono}" placeholder="Ingresar numero de telefono" required>
+						<input type="number" id="nroTelefono" class="form-control col-sm-8" th:field="${cliente.nroTelefono}" placeholder="Ingresar numero de telefono">
+						<div class="alert alert-danger col-sm-8 mt-1 " role="alert" th:if="${#fields.hasErrors('nroTelefono')}" th:errors="*{nroTelefono}"></div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row d-flex justify-content-end">
 						<label for="fechaUltimaCompra" class="col-sm-4 col-form-label">Fecha de la ultima compra:</label>
-						<input type="date" id="fechaUltimaCompra" class="form-control col-sm-8" th:field="${cliente.fechaUltimaCompra}" placeholder="Ingresar la fecha de la ultima compra" required>
+						<input type="date" id="fechaUltimaCompra" class="form-control col-sm-8" th:field="${cliente.fechaUltimaCompra}" placeholder="Ingresar la fecha de la ultima compra">
+						<div class="alert alert-danger col-sm-8 mt-1 " role="alert" th:if="${#fields.hasErrors('fechaUltimaCompra')}" th:errors="*{fechaUltimaCompra}"></div>
 					</div>
 					
 					<!-- ATRIBUTOS DE LA CUENTA -->
-					
 					<div class="form-group row">
 						<label for="cliente.cuenta.saldo" class="col-sm-4 col-form-label">Saldo</label>
-						<input type="number" id="saldo" class="form-control col-sm-8" th:field="${cliente.cuenta.saldo}" required>
+						<input type="number" id="saldo" class="form-control col-sm-8" th:field="${cliente.cuenta.saldo}">
+					  	
 					</div>
 					
 					<div class="form-group row">
@@ -80,24 +89,6 @@
 								<option value="pasiva">Inactiva</option>
 							</select>
 					</div>
-					
-
-			    <!-- 	<h4>DATOS DE CUENTA</h4>
-						<div class="form-group row">
-							<label for="saldo" class="col-sm-3 col-form-label">Saldo:</label><br>
-							<input type="number" id="saldo" class="form-control col-sm-9" th:field="${cuenta.saldo}">
-						</div>
-						<div class="form-group row">
-					  		<!-- <label for="fechacreacion" class="col-sm-3 col-form-label">Fecha de Creacion:</label><br>
-							<input type="date" id="fechacreacion" class="form-control col-sm-9" th:field="${cuenta.fechaCreacion}">
-							
-						</div>
-						<label for="estado"  class="col-sm-4 col-form-label">Estado:</label>
-		  				<select class="custom-select col-sm-8" id="estado" th:field="${cuenta.estado}" required>
-							<option value="">Seleccione una opción</option>
-							<option value="Activo">Activo</option>
-							<option value="Inactiva">Inactiva</option>
-						</select>-->
 
 					<!-- BOTON GUARDAR -->
 					<div class="d-flex justify-content-center mt-4">
