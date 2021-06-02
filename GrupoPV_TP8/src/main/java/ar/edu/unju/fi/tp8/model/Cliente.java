@@ -15,6 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,37 +38,51 @@ public class Cliente {
 	private long id;
 	
 	@Column(name = "TIPO_DOCUMENTO")
+	@NotBlank(message = "Ingrese un tipo de documento")
 	private String tipoDocumento;
 	
 	@Column(name = "DNI")
+	@Min(value = 1, message = "La cantidad minima de digitos debe ser de 1")
+	@Max(value = 99999999, message = "La cantidad maxima de digitos debe ser de 8")
 	private int nroDocumento;
 	
-	@Column(name = "NOMBRE_APELLIDO") 
+	@Column(name = "NOMBRE_APELLIDO")
+	@Size(min = 3, max =100, message = "Ingrese al menos 3 caracteres para el campo de nombre y apellido")
 	private String nombreApellido;
 	
 	@Column(name = "EMAIL")
+	@NotBlank(message = "Debe ingresar un correo.")
+	@Email(message = "Ingrese un correo electronico valido")
 	private String email;
 	
 	@Column(name = "PASS")
+	@NotBlank(message = "Debe ingresar una contraseña.")
 	private String password;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "FECHA_NAC")
+	@NotNull(message = "Debe ingresar la fecha de nacimiento.")
 	private LocalDate fechaNacimiento;
 	
 	@Column(name = "EDAD")
 	private int edad;
 	
 	@Column(name = "COD_AREA")
+	@Min(value = 100, message = "La cantidad minima de digitos debe ser de 3")
+	@Max(value = 9999, message = "La cantidad maxima de digitos debe ser de 4")
 	private int codigoAreaTelefono;
 	
 	@Column(name = "TELEFONO")
+	@Min(value = 100,message = "La cantidad minima de digitos debe ser de 3")
+	@Max(value= 9999999, message = "La cantidad maxima de digitos debe ser de 7")
 	private int nroTelefono;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "FECHA_ULTIMA_COMPRA")
+	@NotNull(message = "Debe ingresar la fecha de la ultima compra realizada.")
 	private LocalDate fechaUltimaCompra;
 	
+	 @Valid
 	 @Autowired
 	 @OneToOne(cascade = CascadeType.ALL)
 	 @JoinColumn(name = "CUENTA_ID")
