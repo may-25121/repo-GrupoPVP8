@@ -47,6 +47,12 @@ public List<Compra> obtenerCompras() {
 	LOGGER.info("RESULT: devuelve una lista de las compras agregadas");
 	return this.compras;
 }
+/*
+@Override
+public List<Compra> buscarCompras(String nombreProducto, double montoSuperior) {
+	// TODO Auto-generated method stub
+	return null;
+}*/
 
 
 

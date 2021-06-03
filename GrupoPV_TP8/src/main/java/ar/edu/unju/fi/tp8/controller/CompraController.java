@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.edu.unju.fi.tp8.model.Compra;
@@ -39,7 +40,7 @@ public class CompraController {
 	}
 	
 	@GetMapping("/compra/guardar")
-	public String getgetCompraResultadoPage(Model model, @RequestParam(name="codigo") String codigo, @RequestParam(name="cantidad") String cantidad) {
+	public String getCompraResultadoPage(Model model, @RequestParam(name="codigo") String codigo, @RequestParam(name="cantidad") String cantidad) {
 		LOGGER.info("CONTROLLER: CompraController con /compra/guardar invoca al metodo Get");
 		LOGGER.info("METHOD: getCompraResultadoPage() -- PARAMS: compra '"+codigo+"' codigo '"+cantidad);
 		LOGGER.info("RESULT: Se visualiza la página resultado02.html mostrando un mensaje que certifica que los datos de la compra se guado correctamente");
@@ -58,4 +59,13 @@ public class CompraController {
 		model.addAttribute("compras", compraService.obtenerCompras());
 	return "listarcompras";
 	}
+	/*
+	@GetMapping("/compra/busqueda")
+	public String buscarComprasPorFiltro(@RequestParam(name="nombreProducto") String nombreProducto, @RequestParam(name="montoSuperior") double montoSuperior, Model model, @ModelAttribute(name="compra") Compra compra) {
+		model.addAttribute("compra",compraService.getCompra());
+		model.addAttribute("compras", compraService.buscarCompras(nombreProducto, montoSuperior));
+		return "listarcompras";
+	}*/
+	
+	
 }

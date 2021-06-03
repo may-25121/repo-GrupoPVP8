@@ -10,30 +10,66 @@
 	<body>
 		<header th:insert="layout/header :: header"></header>
 		<div class="container mb-5">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="text-center text-uppercase mb-5">Lista de Compras</h2>
+			<div class="row d-flex justify-content-center">
+				<div class="col-sm-12 col-md-8 ">
+					
+					<!-- FORMULARIO DE BUSQUEDA -->
+					
+					<div class="col-12 mt-3 ">
+						<h3 class="text-center text-uppercase mb-3">Formulario de Busqueda</h3>
+					</div>
+					
+					<form class="border my-2 col-sm-12" th:action="@{/compra/busqueda}" th:object="${compra}" th:method="GET">
+					
+						<div class="from-group row d-flex justify-content-center mt-5 mb-3">
+							<label for="nombreProducto"  class="col-form-label col-sm-3">Nombre del Producto</label>
+							<input type=text id="nombreProducto" class="form-control col-sm-7">
+							<!--<input type=text id="nombreProducto" class="form-control col-sm-8" th:field="${compra.producto.nombre}">-->
+						</div>
+						<div class="from-group row d-flex justify-content-center my-3">
+							<label for="montoSuperior"  class="col-form-label col-sm-3">Monto superior a</label>
+							<input type=text id="montoSuperior" class="form-control col-sm-7">
+							<!--<input type=text id="montoSuperior" class="form-control col-sm-8" th:field="${compra.producto.nombre}">-->
+						</div>
+
+						<!-- BOTON BUSCAR-->
+						
+						<div class="d-flex justify-content-center my-4">
+					 		<button type="submit" class="btn btn-primary text-center" value="Buscar">Buscar</button>
+					 	</div>
+					 	
+					</form>
+					
+					<!-- TABLA DE COMPRAS--> 	
+						
+					<div class="col-12 mt-3">
+						<h3 class="text-center text-uppercase mb-3">Lista de Compras</h3>
+					</div>
+				
+					<div class="table-responsive col-sm-12 mb-3">
+						<table class="table table-striped" border="1">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">Producto</th>
+									<th scope="col">Cantidad</th>
+									<th scope="col">Total</th>
+								</tr>
+							</thead>
+						  	<tbody> 
+								<tr th:each="c: ${compras}">
+									<td th:text="${c.id}"></td>
+									<td th:text="${c.producto.nombre}"></td>
+									<td th:text="${c.cantidad}"></td>
+									<td th:text="${c.total}"></td>
+								</tr> 
+							</tbody>
+						</table>				
+					</div>
 				</div>
-				<div class="table-responsive col-sm-12 col-md-9 mb-3">
-					<table class="table table-striped" border="1">
-						<thead>
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Producto</th>
-								<th scope="col">Cantidad</th>
-								<th scope="col">Total</th>
-							</tr>
-						</thead>
-					  	<tbody> 
-							<tr th:each="c: ${compras}">
-								<td th:text="${c.id}"></td>
-								<td th:text="${c.producto.nombre}"></td>
-								<td th:text="${c.cantidad}"></td>
-								<td th:text="${c.total}"></td>
-							</tr> 
-						</tbody>
-					</table>				
-				</div>
+				
+				<!-- ASIDE - PUBLICIDAD -->
+				
 				<aside class="col-sm-12 col-md-3 text-center" th:insert="layout/publicidad :: aside"></aside>
 			</div>
 		</div>

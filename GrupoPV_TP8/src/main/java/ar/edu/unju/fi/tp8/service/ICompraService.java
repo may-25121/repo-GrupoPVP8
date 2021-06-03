@@ -13,6 +13,6 @@ public Compra getCompra();
   	
   	public List<Compra> obtenerCompras();
 
-	
+
 
 }
