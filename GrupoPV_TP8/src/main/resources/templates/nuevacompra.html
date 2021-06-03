@@ -25,12 +25,13 @@
 									<spam th:text="${p.nombre}"></spam>
 								</option>
 							</select>
-								
+							<div class="alert alert-danger col-sm-8 mt-1" role="alert" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>	
 						</div>
 						
 						<div class="form-group row">
 							<label for="cantidad" class="col-sm-4 col-form-label">Cantidad</label>
 							<input type="number" id="cantidad" class="form-control col-sm-8" th:field="${compra.cantidad}" placeholder="Ingresar cantidad" required>
+							<div class="alert alert-danger col-sm-8 mt-1" role="alert" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
 						</div>
 							
 						<div class="d-flex justify-content-center mt-4">

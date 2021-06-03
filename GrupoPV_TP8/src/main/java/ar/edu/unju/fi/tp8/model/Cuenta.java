@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,7 @@ public class Cuenta {
 	private Long id;
 	
 	@Column(name = "SALDO")
+	@Min(value = 1, message = "Debe ingresar una cantidad minima")
 	private double saldo;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -32,6 +35,7 @@ public class Cuenta {
 	private LocalDate fechaCreacion;
 	
 	@Column(name = "ESTADO")
+	@NotBlank(message = "Debe ingresar el estado de la cuenta.")
 	private String estado;
 	
 	@OneToOne(mappedBy = "cuenta", fetch = FetchType.LAZY)
