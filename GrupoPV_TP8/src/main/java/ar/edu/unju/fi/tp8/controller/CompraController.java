@@ -59,13 +59,13 @@ public class CompraController {
 		model.addAttribute("compras", compraService.obtenerCompras());
 	return "listarcompras";
 	}
-	/*
+
 	@GetMapping("/compra/busqueda")
 	public String buscarComprasPorFiltro(@RequestParam(name="nombreProducto") String nombreProducto, @RequestParam(name="montoSuperior") double montoSuperior, Model model, @ModelAttribute(name="compra") Compra compra) {
 		model.addAttribute("compra",compraService.getCompra());
 		model.addAttribute("compras", compraService.buscarCompras(nombreProducto, montoSuperior));
 		return "listarcompras";
-	}*/
+	}
 	
 	
 }

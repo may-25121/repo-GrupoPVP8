@@ -13,6 +13,6 @@ public Compra getCompra();
   	
   	public List<Compra> obtenerCompras();
 
-
+public List<Compra> buscarCompras(String nombreProducto, double montoSuperior);
 
 }
