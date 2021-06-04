@@ -57,6 +57,7 @@ public class CompraController {
 		LOGGER.info("METHOD: getListarComprasPage()");
 		LOGGER.info("RESULT: Se visualiza la página listarcompras.html, mostrando las compras que se encuentran en la lista");
 		model.addAttribute("compras", compraService.obtenerCompras());
+		model.addAttribute("compra", compraService.getCompra());
 	return "listarcompras";
 	}
 	/*

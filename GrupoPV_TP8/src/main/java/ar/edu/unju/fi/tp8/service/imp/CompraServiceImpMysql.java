@@ -34,7 +34,7 @@ public class CompraServiceImpMysql implements ICompraService{
 		List<Compra> compras = (List<Compra>) compraDAO.findAll();
 		return compras;
 	}
-/*
+
 	@Override
 	public List<Compra> buscarCompras(String nombreProducto, double montoSuperior) {
 		List<Compra> compras = new ArrayList<>();
@@ -44,6 +44,6 @@ public class CompraServiceImpMysql implements ICompraService{
 			compras = compraDAO.findByMontoSuperior(montoSuperior);
 		}
 		return compras;
-	}*/
+	}
 
 }
