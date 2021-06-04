@@ -10,8 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -27,11 +30,13 @@ public class Cuenta {
 	private Long id;
 	
 	@Column(name = "SALDO")
-	@Min(value = 1, message = "Debe ingresar una cantidad minima")
+	@DecimalMin(value = "0.01", message = "Debe ingresar una cantidad mayor a 0.01")
+	@DecimalMax(value = "100000.00", message = "Debe ingresar una cantidad menor a 100000.00")
 	private double saldo;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name= "FECHA_CREACION")
+	@NotNull(message = "Debe ingresar una fecha")
 	private LocalDate fechaCreacion;
 	
 	@Column(name = "ESTADO")
