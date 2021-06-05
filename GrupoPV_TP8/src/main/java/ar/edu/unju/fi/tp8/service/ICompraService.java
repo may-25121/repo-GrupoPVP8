@@ -14,7 +14,7 @@ public interface ICompraService {
   	
   	public List<Compra> obtenerCompras();
   	
- // 	public List<Compra> buscarCompras(String nombreProducto, double montoSuperior);
+  	//public List<Compra> buscarCompras(String nombreProducto, double montoSuperior);
 
 
 
