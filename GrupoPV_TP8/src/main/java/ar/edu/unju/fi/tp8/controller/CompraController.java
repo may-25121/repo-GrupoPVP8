@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.edu.unju.fi.tp8.model.Compra;
@@ -22,8 +21,6 @@ import ar.edu.unju.fi.tp8.service.IProductoService;
 public class CompraController {
 	private static final Log LOGGER = LogFactory.getLog(CompraController.class);
 	
-	@Autowired
-	private Compra compra;
 	
 	@Autowired
 	@Qualifier("compraServiceMysql")
@@ -42,32 +39,20 @@ public class CompraController {
 		model.addAttribute("productos", productoService.getAllProductos());
 		return "nuevacompra";
 	}
-	/*
-	@GetMapping("/compra/guardar")
-	public String getgetCompraResultadoPage(Model model, @RequestParam(name="codigo") String codigo, @RequestParam(name="cantidad") String cantidad) {
-		LOGGER.info("CONTROLLER: CompraController con /compra/guardar invoca al metodo Get");
-		LOGGER.info("METHOD: getCompraResultadoPage() -- PARAMS: compra '"+codigo+"' codigo '"+cantidad);
-		LOGGER.info("RESULT: Se visualiza la página resultado02.html mostrando un mensaje que certifica que los datos de la compra se guado correctamente");
-		this.compra.setCantidad(Integer.valueOf(cantidad));
-		this.compra.setProducto(this.productoService.searchProducto(Integer.valueOf(codigo)));
-		this.compra.setTotal(this.compra.getTotal());
-		compraService.agregarCompra(compra);
-		return "resultado02";
-	}*/	
 	
 	@GetMapping("/compra/guardar")
 	public String getCompraResultadoPage(@Valid @ModelAttribute("compra") Compra compra,BindingResult result, Model model, @RequestParam(name="codigo") String codigo, @RequestParam(name="cantidad") String cantidad) {
+		compra.setCantidad(Integer.valueOf(cantidad));
+		compra.setProducto(this.productoService.searchProducto(Integer.valueOf(codigo)));
+		compra.setTotal(compra.getTotal());
+		System.out.println(compra);
 		if(result.hasErrors()) {
-			model.addAttribute("compra", compraService.getCompra());
+			model.addAttribute("compra", compra);
 			model.addAttribute("productos", productoService.getAllProductos());
-			System.out.println("ERROR!!");
 			return "nuevacompra";
 		}else {
-			this.compra.setCantidad(Integer.valueOf(cantidad));
-			this.compra.setProducto(this.productoService.searchProducto(Integer.valueOf(codigo)));
-			this.compra.setTotal(this.compra.getTotal());
 			compraService.agregarCompra(compra);
-			System.out.println("CORRECTO");
+			System.out.println(compra);
 			return "resultado02";
 		}
 	}
@@ -81,13 +66,30 @@ public class CompraController {
 		model.addAttribute("compra", compraService.getCompra());
 	return "listarcompras";
 	}
-/*	
+	
+	/*
+	
 	@GetMapping("/compra/busqueda")
-	public String buscarComprasPorFiltro(@RequestParam(name="nombreProducto") String nombreProducto, @RequestParam(name="monto") double monto, Model model, @ModelAttribute(name="compra") Compra compra) {
+	public String buscarComprasPorFiltro(@RequestParam(name="nombre") String nombre, @RequestParam(name="total") double total, Model model, @ModelAttribute(name="compra") Compra compra) {
 		model.addAttribute("compra",compraService.getCompra());
-		model.addAttribute("compras", compraService.buscarCompras(nombreProducto, monto));
+		System.out.println(compra);
+		model.addAttribute("compras", compraService.buscarCompras(nombre, total));
+		return "listarcompras";
+	}*/
+	
+	@GetMapping("/compra/busqueda")
+	public String buscarComprasPorFiltro(@RequestParam(name="nombre") String nombre, @RequestParam(name="total") double total, Model model) {
+	/*	model.addAttribute("compra",compraService.getCompra());
+		System.out.println(compra);*/
+		model.addAttribute("nombre",nombre);
+		model.addAttribute("total",total);
+		System.out.println("Filtro Producto=> "+nombre);
+		System.out.println("Filtro Total=> "+total);
+		model.addAttribute("compras", compraService.buscarCompras(nombre, total));
+		
+		
 		return "listarcompras";
 	}
-	*/
+
 	
 }

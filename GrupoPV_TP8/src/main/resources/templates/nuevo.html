@@ -14,27 +14,32 @@
 				<div class="col-12">
 					<h2 class="text-center mb-5 text-uppercase">Formulario de Producto</h2>
 				</div>
-				<form action="/producto/guardar" class="col-sm-12 col-md-9 mb-3" th:bject="${producto}" method="POST">
+				<form action="/producto/guardar" class="col-sm-12 col-md-9 mb-3" th:object="${producto}" method="POST">
 					<div class="p-5 mx-3 border">
-						<div class="form-group row">
+						<div class="form-group row d-flex justify-content-end">
 							<label for="codigo" class="col-sm-3 col-form-label">Codigo:</label><br>
-							<input type="number" id="codigo" class="form-control col-sm-9" placeholder="Ingrese codigo" th:field="${producto.codigo}">
+							<input type="number" id="codigo" class="form-control col-sm-9" placeholder="Ingrese codigo" th:field="*{codigo}">
+							<div class="alert alert-danger col-sm-9 mt-1" role="alert" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
 						</div>
-						<div class="form-group row">
+						<div class="form-group row d-flex justify-content-end">
 							<label for="nombre" class="col-sm-3 col-form-label">Nombre:</label><br>
-							<input type="text" id="nombre" class="form-control col-sm-9" th:field="${producto.nombre}">
+							<input type="text" id="nombre" class="form-control col-sm-9" th:field="*{nombre}">
+							<div class="alert alert-danger col-sm-9 mt-1" role="alert" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 						</div>
-						<div class="form-group row">
+						<div class="form-group row d-flex justify-content-end">
 					  		<label for="precio" class="col-sm-3 col-form-label">Precio:</label><br>
-							<input type="number" id="precio" class="form-control col-sm-9" th:field="${producto.precio}">
+							<input type="number" id="precio" class="form-control col-sm-9" th:field="*{precio}">
+							<div class="alert alert-danger col-sm-9 mt-1" role="alert" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
 						</div>
-						<div class="form-group row">
+						<div class="form-group row d-flex justify-content-end">
 							<label for="marca" class="col-sm-3 col-form-label">Marca:</label><br>
-							<input type="text" id="marca" class="form-control col-sm-9" th:field="${producto.marca}">
+							<input type="text" id="marca" class="form-control col-sm-9" th:field="*{marca}">
+							<div class="alert alert-danger col-sm-9 mt-1" role="alert" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></div>
 						</div>
-						<div class="form-group row">
+						<div class="form-group row d-flex justify-content-end">
 							<label for="stock" class="col-sm-3 col-form-label">Stock:</label><br>
-							<input type="number" id="stock" class="form-control col-sm-9" th:field="${producto.stock}">
+							<input type="number" id="stock" class="form-control col-sm-9" th:field="*{stock}">
+							<div class="alert alert-danger col-sm-9 mt-1" role="alert" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
 						</div>
 						<div class="d-flex justify-content-center mt-5">
 							<button type="submit" class="btn btn-primary text-center" value="Enviar">Guardar</button>
