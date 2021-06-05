@@ -34,16 +34,16 @@ public class CompraServiceImpMysql implements ICompraService{
 		List<Compra> compras = (List<Compra>) compraDAO.findAll();
 		return compras;
 	}
-/*
+
 	@Override
-	public List<Compra> buscarCompras(String nombreProducto, double montoSuperior) {
+	public List<Compra> buscarCompras(String nombre, double total) {
 		List<Compra> compras = new ArrayList<>();
-		if(!nombreProducto.isEmpty()&& montoSuperior>=0) {
-			compras = compraDAO.findBynombreProductoAndMontoSuperior(nombreProducto, montoSuperior);
-		}else if (nombreProducto.isEmpty()&& montoSuperior>=0) {
-			compras = compraDAO.findByMontoSuperior(montoSuperior);
+		if(!nombre.isEmpty()&& total>=0) {
+			compras = compraDAO.findByProductoNombreAndTotalGreaterThanEqual(nombre, total);
+		}else if (nombre.isEmpty()&& total>=0) {
+			compras = compraDAO.findByTotalGreaterThanEqual(total);
 		}
 		return compras;
-	}*/
+	}
 
 }

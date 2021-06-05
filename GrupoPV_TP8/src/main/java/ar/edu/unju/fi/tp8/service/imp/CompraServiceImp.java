@@ -51,18 +51,13 @@ public List<Compra> obtenerCompras() {
 	LOGGER.info("RESULT: devuelve una lista de las compras agregadas");
 	return this.compras;
 }
-/*
+
 @Override
-public List<Compra> buscarCompras(String nombreProducto, double montoSuperior) {
-		List<Compra> compras = new ArrayList<Compra>();
-		if(!nombreProducto.isEmpty() && montoSuperior >=0) {
-			compras = compraDAO.findBynombreProductoAndMontoSuperior(nombreProducto, montoSuperior); 
-		}else if(nombreProducto.isEmpty() && montoSuperior >=0 ) {
-			compras = compraDAO.findByMontoSuperior(montoSuperior);
-		}
-	return compras;
+public List<Compra> buscarCompras(String nombre, double monto) {
+	// TODO Auto-generated method stub
+	return null;
 }
-*/
+
 
 
 }

@@ -22,28 +22,25 @@ import org.springframework.stereotype.Component;
 public class Producto {
 	@Id
 	@Column(name = "PRODUCT_CODIGO")
+	@Min(value = 1, message = "Ingrese un valor superior a 0")
 	private int codigo;
 	
 	@Column(name = "NOMBRE" , length = 150, nullable = true)
-	@NotBlank(message = "Ingrese un nombre")
 	@Size(min = 3,message = "Ingrese un nombre mayor a 3 caracteres")
 	private String nombre;
 	
 	@Column(name = "PRECIO")
-	@NotNull(message = "Ingrese un precio")
-	@DecimalMin(value = "0.10" , message = "Ingrese un valor mayor a 0.10")
+	@DecimalMin(value = "0.10" , message = "Ingrese un valor superior")
 	@DecimalMax(value = "10000.00", message = "Ingrese un valor menor a 10000.00")
 	private double precio;
 	
 	@Column(name = "MARCA")
-	@NotBlank(message = "Ingrese una marca")
-	@Size(min = 3, message = "Ingrese un nombre mayor a 3 caracteres")
+	@Size(min = 3, message = "Ingrese un nombre mayor a 2 caracteres")
 	private String marca;
 	
 	@Column(name = "STOCK")
-	@NotNull(message = "Ingrese un stock")
-	@Min(value = 1, message = "Ingrese un valor mayor a 1")
-	@Max(value = 10000 , message = "Ingrese un valor menor a 10000")
+	@Min(value = 1, message = "Ingrese un valor superior")
+	@Max(value = 10000, message = "Ingrese un valor menor a 10000")
 	private int stock;
 	
 
