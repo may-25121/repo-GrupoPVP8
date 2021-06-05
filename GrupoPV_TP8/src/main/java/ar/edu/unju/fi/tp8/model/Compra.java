@@ -29,22 +29,19 @@ public class Compra {
 	@Column(name = "ID_COMPRA")
 	private long id;
 	
-	@Valid
+	
 	@Autowired
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PRODUCT_CODIGO")
 	private Producto producto;
 	
 	@Column(name = "CANTIDAD")
-	@NotNull(message = "Ingrese una cantidad")
-	@Min(value = 1,message = "Ingrese una cantidad maxima a 1")
+	@Min(value = 1, message = "Ingrese una cantidad maxima a 1")
 	@Max(value = 10000, message = "Ingrese una cantidad minima a 10000")
 	private int cantidad;
 	
 	@Column(name = "TOTAL")
 	@NotNull(message = "Ingrese un total")
-	@DecimalMin(value = "0.10", message = "Ingrese un total mayor a 0.10")
-	@DecimalMax(value = "100000.00", message = "Ingrese un total menor a 100000.00")
 	private double total;
 	
 	public Compra() {
