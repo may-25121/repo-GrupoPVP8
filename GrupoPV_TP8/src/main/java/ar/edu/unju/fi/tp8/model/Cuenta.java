@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -35,7 +34,6 @@ public class Cuenta {
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name= "FECHA_CREACION")
-	@NotNull(message = "Debe ingresar una fecha")
 	private LocalDate fechaCreacion;
 	
 	@Column(name = "ESTADO")

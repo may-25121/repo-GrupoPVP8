@@ -67,27 +67,15 @@ public class CompraController {
 	return "listarcompras";
 	}
 	
-	/*
-	
-	@GetMapping("/compra/busqueda")
-	public String buscarComprasPorFiltro(@RequestParam(name="nombre") String nombre, @RequestParam(name="total") double total, Model model, @ModelAttribute(name="compra") Compra compra) {
-		model.addAttribute("compra",compraService.getCompra());
-		System.out.println(compra);
-		model.addAttribute("compras", compraService.buscarCompras(nombre, total));
-		return "listarcompras";
-	}*/
-	
 	@GetMapping("/compra/busqueda")
 	public String buscarComprasPorFiltro(@RequestParam(name="nombre") String nombre, @RequestParam(name="total") double total, Model model) {
-	/*	model.addAttribute("compra",compraService.getCompra());
-		System.out.println(compra);*/
+
 		model.addAttribute("nombre",nombre);
 		model.addAttribute("total",total);
-		System.out.println("Filtro Producto=> "+nombre);
-		System.out.println("Filtro Total=> "+total);
+		System.out.println("Nombre de Producto: "+nombre);
+		System.out.println("Total: "+total);
 		model.addAttribute("compras", compraService.buscarCompras(nombre, total));
-		
-		
+
 		return "listarcompras";
 	}
 
