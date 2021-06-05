@@ -56,8 +56,6 @@ public List<Compra> obtenerCompras() {
 public List<Compra> buscarCompras(String nombre, double monto) {
 	// TODO Auto-generated method stub
 	return null;
-}
-
 
 
 }

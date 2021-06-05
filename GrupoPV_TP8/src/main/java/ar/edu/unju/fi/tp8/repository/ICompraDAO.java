@@ -10,5 +10,6 @@ public interface ICompraDAO extends CrudRepository<Compra, Long>{
 	
 	public List<Compra> findByProductoNombreAndTotalGreaterThanEqual(String nombre, double total);
 	public List<Compra> findByTotalGreaterThanEqual(double total);
+
 	
 }
