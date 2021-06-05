@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tp8.model.Compra;
-import ar.edu.unju.fi.tp8.repository.ICompraDAO;
 import ar.edu.unju.fi.tp8.service.ICompraService;
 
 
@@ -18,9 +17,6 @@ public class CompraServiceImp implements ICompraService {
 
 	@Autowired
 	private Compra compra;
-	
-	@Autowired
-	private ICompraDAO compraDAO;
 	
 	List<Compra> compras = new ArrayList<Compra>();
 	
@@ -57,5 +53,5 @@ public List<Compra> buscarCompras(String nombre, double monto) {
 	// TODO Auto-generated method stub
 	return null;
 
-
+}
 }

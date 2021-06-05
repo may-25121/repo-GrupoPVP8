@@ -76,19 +76,20 @@
 					
 					<!-- ATRIBUTOS DE LA CUENTA -->
 				
-					<div class="form-group row">
-						<label for="cliente.cuenta.saldo" class="col-sm-4 col-form-label">Saldo</label>
-						<input type="number" id="saldo" class="form-control col-sm-8" th:field="${cliente.cuenta.saldo}">
-					  	
+					<div class="form-group row justify-content-end">
+						<label for="saldo" class="col-sm-4 col-form-label">Saldo</label>
+						<input type="number" id="saldo" class="form-control col-sm-8" th:field="*{cuenta.saldo}">
+					  	<div class="alert alert-danger col-sm-8 mt-1 " role="alert" th:if="${#fields.hasErrors('cuenta.saldo')}" th:errors="*{cuenta.saldo}"></div>
 					</div>
 					
-					<div class="form-group row">
-						<label for="cliente.cuenta.estado"  class="col-sm-4 col-form-label">Estado de cuenta</label>
-							<select class="col-sm-8" id="estado" th:field="${cliente.cuenta.estado}">
+					<div class="form-group row d-flex justify-content-end">
+						<label for="estado"  class="col-sm-4 col-form-label">Estado de cuenta</label>
+							<select class="col-sm-8" id="estado" th:field="*{cuenta.estado}">
 								<option value="">Seleccione una opción</option>
 								<option value="activa">Activa</option>
 								<option value="pasiva">Inactiva</option>
 							</select>
+						<div class="alert alert-danger col-sm-8 mt-1 " role="alert" th:if="${#fields.hasErrors('cuenta.estado')}" th:errors="*{cuenta.estado}"></div>
 					</div>
 
 					<!-- BOTON GUARDAR -->

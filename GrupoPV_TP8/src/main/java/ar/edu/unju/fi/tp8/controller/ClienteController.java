@@ -61,6 +61,7 @@ public class ClienteController {
 			modelAndView= new ModelAndView("form-cliente");
 			List<Cliente> clientes= clienteService.getClientes();
 			modelAndView.addObject("clientes", clientes);
+			System.out.println(clientes.toString());
 			return modelAndView;
 		}else {
 			modelAndView= new ModelAndView("clientes");
@@ -68,6 +69,7 @@ public class ClienteController {
 			cliente.getCuenta().setFechaCreacion(cliente.getCuenta().getFechaCreacion());
 			clienteService.guardarCliente(cliente);
 			modelAndView.addObject("clientes", clienteService.getClientes());
+			System.out.println(cliente);
 			return modelAndView;
 		}
 	}
