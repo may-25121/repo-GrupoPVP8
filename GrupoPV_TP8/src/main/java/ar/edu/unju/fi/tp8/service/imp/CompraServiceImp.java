@@ -51,7 +51,7 @@ public List<Compra> obtenerCompras() {
 	LOGGER.info("RESULT: devuelve una lista de las compras agregadas");
 	return this.compras;
 }
-
+/*
 @Override
 public List<Compra> buscarCompras(String nombreProducto, double montoSuperior) {
 		List<Compra> compras = new ArrayList<Compra>();
@@ -62,7 +62,7 @@ public List<Compra> buscarCompras(String nombreProducto, double montoSuperior) {
 		}
 	return compras;
 }
-
+*/
 
 
 }
